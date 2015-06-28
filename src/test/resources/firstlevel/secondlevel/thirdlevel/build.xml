@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GB2312"?>
+<project name="build"  basedir=".">
+
+	<path id="ext.classpath">
+
+		<fileset dir="${dir.dependency}">
+			<include name="*-common-*.jar" />
+		</fileset>
+		<pathelement
+			location="${M2_REPO}/spring3.0/server/org.springframework.web-3.0.3.RELEASE.jar" />
+		<pathelement
+			location="${M2_REPO}/spring3.0/server/org.springframework.web.servlet-3.0.3.RELEASE.jar" />
+	</path>
+</project>
