@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'gather_ant_dependencies'
+rootProject.name = 'transfer_dependencies'
