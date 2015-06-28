@@ -1,4 +1,4 @@
-package tk.jeromefromcn.collector;
+package tk.jeromefromcn.transformation;
 
 import static org.junit.Assert.*;
 
@@ -7,10 +7,12 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import tk.jeromefromcn.transformation.AntDependenciesCollector;
+
 public class AntDependenciesCollectorTest {
 
 	private AntDependenciesCollector tester = new AntDependenciesCollector(
-			"src/test/resources/tk/jeromefromcn/firstlevel");
+			"src/test/resources/tk/jeromefromcn/transformation/firstlevel");
 
 	@Test
 	public void testCollectDependencies() {

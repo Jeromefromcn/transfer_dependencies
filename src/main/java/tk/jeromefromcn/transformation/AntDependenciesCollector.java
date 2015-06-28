@@ -1,4 +1,4 @@
-package tk.jeromefromcn.collector;
+package tk.jeromefromcn.transformation;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,6 +14,12 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * 根据给定的stariboss代码根目录，提取所有子目录下build.xml中的依赖
+ * 
+ * @author Jerome
+ *
+ */
 public class AntDependenciesCollector {
 
 	private static final String BUILD_FILE_NAME = "build.xml";
@@ -27,8 +33,19 @@ public class AntDependenciesCollector {
 
 	private Set<String> dependenciesSet;
 
+	public String getBasePath() {
+		return basePath;
+	}
+
+	public void setBasePath(String basePath) {
+		this.basePath = basePath;
+	}
+
 	public AntDependenciesCollector(String basePath) {
 		this.basePath = basePath;
+	}
+
+	public AntDependenciesCollector() {
 	}
 
 	public List<String> getBuildFilePaths() {
