@@ -11,5 +11,8 @@ public interface Transformer {
 
 	void transfer();
 
+	void transferWithRepositoryGenerated();
+
 	void setBasePath(String basePath);
+
 }

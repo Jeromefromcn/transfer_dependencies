@@ -1,5 +1,6 @@
 package tk.jeromefromcn.transformation;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,8 +12,12 @@ import java.util.Set;
 public interface AntDependenciesCollector {
 	/**
 	 * 获取stariboss代码目录下所有工程的依赖，返回Set格式字符串集合
+	 * 
+	 * @return
 	 */
 	Set<String> collectDependencies();
 
 	void setBasePath(String basePath);
+
+	List<String> getBuildFilePaths();
 }

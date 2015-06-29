@@ -1,10 +1,9 @@
 package tk.jeromefromcn.transformation;
 
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.stereotype.Component;
-
-import com.sun.javafx.collections.MappingChange.Map;
 
 @Component
 public class DependenciesMapperImpl implements DependenciesMapper {
