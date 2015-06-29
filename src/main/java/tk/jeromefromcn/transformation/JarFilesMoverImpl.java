@@ -8,19 +8,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class JarFilesMoverImpl implements JarFilesMover {
 
-	private static final String STAREXT = "/starext";
+	private static final String STAREXT = "starext";
 
+	// "compile 'starext:gradle-wrapper:1.0'"
 	@Override
 	public void moveJarFiles(String m2Repo, Map<String, String> dependenciesMap) {
 		File m2RepoDir = new File(m2Repo);
 		if (m2RepoDir.isDirectory()) {
-			File groupIdDir = new File(m2RepoDir.getPath() + STAREXT);
+			File groupIdDir = new File(m2RepoDir.getPath() + "/" + STAREXT);
 			System.out.println(groupIdDir.getAbsolutePath());
 			if (!groupIdDir.exists()) {
 				groupIdDir.mkdir();
 			}
 			for (String key : dependenciesMap.keySet()) {
-				
+				String gradleDepen = dependenciesMap.get(key);
+
 			}
 		} else {
 			System.out.println("给定的仓库目录不存在");
