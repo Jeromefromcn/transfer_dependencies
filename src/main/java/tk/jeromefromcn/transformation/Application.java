@@ -14,7 +14,10 @@ public class Application {
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				Application.class);
 		Transformer transformer = context.getBean(TransformerImpl.class);
-		transformer.setBasePath("D:/GitLab/stariboss-os-demo/");
-		transformer.transfer();
+		// transformer
+		// .transferDependencies("/Users/Jerome/Documents/gitlab/stariboss-os-demo");
+		transformer.transferArtifacts(
+				"/Users/Jerome/Documents/gitlab/stariboss-os-demo",
+				"/Users/Jerome/Documents/gitlab/tool/m2/repository");
 	}
 }

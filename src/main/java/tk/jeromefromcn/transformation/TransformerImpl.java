@@ -22,12 +22,13 @@ public class TransformerImpl implements Transformer {
 	private GradleScriptGenerator gradleScriptGenerator;
 
 	@Override
-	public void transfer() {
+	public void transferDependencies(String basePath) {
+		antDependenciesCollector.setBasePath(basePath);
 		Set<String> dependenciesSet = antDependenciesCollector
 				.collectDependencies();
-//		for (String string : dependenciesSet) {
-//			System.out.println(string);
-//		}
+		// for (String string : dependenciesSet) {
+		// System.out.println(string);
+		// }
 		System.out.println("--------------------------------------------");
 		Map<String, String> dependenciesMap = dependenciesMapper
 				.mapDependencies(dependenciesSet);
@@ -37,23 +38,15 @@ public class TransformerImpl implements Transformer {
 	}
 
 	@Override
-	public void setBasePath(String basePath) {
+	public void transferArtifacts(String basePath, String repoPath) {
 		antDependenciesCollector.setBasePath(basePath);
-	}
-
-	@Override
-	public void transferWithRepositoryGenerated() {
 		Set<String> dependenciesSet = antDependenciesCollector
 				.collectDependencies();
 		for (String string : dependenciesSet) {
 			System.out.println(string);
 		}
 		System.out.println("--------------------------------------------");
-		Map<String, String> dependenciesMap = dependenciesMapper
-				.mapDependencies(dependenciesSet);
-		System.out.println("--------------------------------------------");
-		jarFilesMover.moveJarFiles("D:/GitLab/tool/.m2/repository",
-				dependenciesMap);
+		jarFilesMover.moveJarFiles(repoPath, dependenciesSet);
 	}
 
 }

@@ -1,6 +1,6 @@
 package tk.jeromefromcn.transformation;
 
-import java.util.Map;
+import java.util.Set;
 
 /**
  * 根据依赖的groupid、artifactid、version生成新的存放路径并移动到新路径
@@ -16,5 +16,5 @@ public interface JarFilesMover {
 	 * @param dependenciesMap
 	 */
 
-	void moveJarFiles(String m2Repo, Map<String, String> dependenciesMap);
+	void moveJarFiles(String m2Repo, Set<String> dependenciesSet);
 }
