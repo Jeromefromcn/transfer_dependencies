@@ -25,7 +25,7 @@ public class TransformerImpl implements Transformer {
 	public void transferDependencies(String basePath) {
 		antDependenciesCollector.setBasePath(basePath);
 		Set<String> dependenciesSet = antDependenciesCollector
-				.collectDependencies();
+				.collectThirdDependencies();
 		// for (String string : dependenciesSet) {
 		// System.out.println(string);
 		// }
@@ -41,7 +41,7 @@ public class TransformerImpl implements Transformer {
 	public void transferArtifacts(String basePath, String repoPath) {
 		antDependenciesCollector.setBasePath(basePath);
 		Set<String> dependenciesSet = antDependenciesCollector
-				.collectDependencies();
+				.collectThirdDependencies();
 		for (String string : dependenciesSet) {
 			System.out.println(string);
 		}

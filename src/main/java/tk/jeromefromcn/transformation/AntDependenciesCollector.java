@@ -11,11 +11,13 @@ import java.util.Set;
  */
 public interface AntDependenciesCollector {
 	/**
-	 * 获取stariboss代码目录下所有工程的依赖，返回Set格式字符串集合
+	 * 获取stariboss代码目录下所有工程的第三方依赖，返回Set格式字符串集合
 	 * 
 	 * @return
 	 */
-	Set<String> collectDependencies();
+	Set<String> collectThirdDependencies();
+	
+
 
 	void setBasePath(String basePath);
 

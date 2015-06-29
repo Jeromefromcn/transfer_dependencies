@@ -12,9 +12,9 @@ public class AntDependenciesCollectorImplTest {
 	private AntDependenciesCollector tester = new AntDependenciesCollectorImpl();
 
 	@Test
-	public void testCollectDependencies() {
+	public void testCollectThirdDependencies() {
 		tester.setBasePath("src/test/resources/tk/jeromefromcn/transformation/firstlevel");
-		Set<String> dependenciesSet = tester.collectDependencies();
+		Set<String> dependenciesSet = tester.collectThirdDependencies();
 		Set<String> compareSet = new HashSet<String>();
 		compareSet
 				.add("${M2_REPO}/spring3.0/server/org.springframework.web-3.0.3.RELEASE.jar");

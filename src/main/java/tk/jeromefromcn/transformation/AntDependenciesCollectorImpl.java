@@ -52,7 +52,7 @@ public class AntDependenciesCollectorImpl implements AntDependenciesCollector {
 		return dependenciesSet;
 	}
 
-	public Set<String> collectDependencies() {
+	public Set<String> collectThirdDependencies() {
 
 		buildFilePaths = getBuildFilePaths(basePath);
 
