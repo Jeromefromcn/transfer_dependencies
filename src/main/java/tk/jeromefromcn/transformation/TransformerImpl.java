@@ -23,12 +23,11 @@ public class TransformerImpl implements Transformer {
 
 	@Override
 	public void transfer() {
-		// TODO Auto-generated method stub
 		Set<String> dependenciesSet = antDependenciesCollector
 				.collectDependencies();
-		for (String string : dependenciesSet) {
-			System.out.println(string);
-		}
+//		for (String string : dependenciesSet) {
+//			System.out.println(string);
+//		}
 		System.out.println("--------------------------------------------");
 		Map<String, String> dependenciesMap = dependenciesMapper
 				.mapDependencies(dependenciesSet);

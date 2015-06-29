@@ -52,14 +52,6 @@ public class AntDependenciesCollectorImpl implements AntDependenciesCollector {
 		return dependenciesSet;
 	}
 
-	public static void main(String[] args) {
-		AntDependenciesCollectorImpl collector = new AntDependenciesCollectorImpl(
-				"/Users/Jerome/Documents/gitlab/stariboss-os-demo/");
-		for (String d : collector.collectDependencies()) {
-			System.out.println(d);
-		}
-	}
-
 	public Set<String> collectDependencies() {
 
 		buildFilePaths = getBuildFilePaths(basePath);

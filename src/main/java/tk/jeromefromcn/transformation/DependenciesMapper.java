@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface DependenciesMapper {
 	/**
-	 * 将ant依赖转换成gradle类型依赖
+	 * 将ant依赖转换成gradle类型依赖，groupid固定为starext，artifactid取jar文件的名字，version固定为1.0
 	 * 
 	 * @param antDependenciesSet
 	 * @return

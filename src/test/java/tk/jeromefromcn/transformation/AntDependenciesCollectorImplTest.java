@@ -9,11 +9,11 @@ import org.junit.Test;
 
 public class AntDependenciesCollectorImplTest {
 
-	private AntDependenciesCollectorImpl tester = new AntDependenciesCollectorImpl(
-			"src/test/resources/tk/jeromefromcn/transformation/firstlevel");
+	private AntDependenciesCollector tester = new AntDependenciesCollectorImpl();
 
 	@Test
 	public void testCollectDependencies() {
+		tester.setBasePath("src/test/resources/tk/jeromefromcn/transformation/firstlevel");
 		Set<String> dependenciesSet = tester.collectDependencies();
 		Set<String> compareSet = new HashSet<String>();
 		compareSet

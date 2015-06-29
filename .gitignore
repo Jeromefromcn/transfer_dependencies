@@ -6,6 +6,7 @@ bin/
 
 # gradle
 .gradle/
+build/
 
 *.class
 
