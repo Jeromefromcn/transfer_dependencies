@@ -9,18 +9,14 @@ import java.util.Set;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-/**
- * 根据给定的stariboss代码根目录，提取所有子目录下build.xml中的依赖
- * 
- * @author Jerome
- *
- */
-public class AntDependenciesCollector {
+@Component
+public class AntDependenciesCollectorImpl implements AntDependenciesCollector {
 
 	private static final String BUILD_FILE_NAME = "build.xml";
 	private static final String PATH_ELEMENT = "path";
@@ -41,11 +37,11 @@ public class AntDependenciesCollector {
 		this.basePath = basePath;
 	}
 
-	public AntDependenciesCollector(String basePath) {
+	public AntDependenciesCollectorImpl(String basePath) {
 		this.basePath = basePath;
 	}
 
-	public AntDependenciesCollector() {
+	public AntDependenciesCollectorImpl() {
 	}
 
 	public List<String> getBuildFilePaths() {
@@ -57,18 +53,14 @@ public class AntDependenciesCollector {
 	}
 
 	public static void main(String[] args) {
-		AntDependenciesCollector collector = new AntDependenciesCollector(
+		AntDependenciesCollectorImpl collector = new AntDependenciesCollectorImpl(
 				"/Users/Jerome/Documents/gitlab/stariboss-os-demo/");
 		for (String d : collector.collectDependencies()) {
 			System.out.println(d);
 		}
 	}
 
-	/**
-	 * 获取stariboss代码目录下所有工程的依赖，返回Set格式字符串集合
-	 */
 	public Set<String> collectDependencies() {
-		// TODO Auto-generated method stub
 
 		buildFilePaths = getBuildFilePaths(basePath);
 
@@ -131,7 +123,6 @@ public class AntDependenciesCollector {
 				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return dependenciesSet;

@@ -1,13 +1,18 @@
 package tk.jeromefromcn.transformation;
 
+import java.util.Set;
+
+import org.springframework.stereotype.Component;
+
 import com.sun.javafx.collections.MappingChange.Map;
 
-/**
- * 根据传入的Set，生成maven标准的lib仓库，并生成ant依赖与gradle依赖的map
- * 
- * @author Jerome
- *
- */
-public class DenpendenciesMapper {
-//	public Map<String, String> 
+@Component
+public class DependenciesMapperImpl implements DependenciesMapper {
+
+	@Override
+	public Map<String, String> mapDependencies(Set<String> antDependenciesSet) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -3,12 +3,12 @@ package tk.jeromefromcn.transformation;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GradleScriptGeneratorImpl implements GradleScriptGenerator {
+public class JarFilesMoverImpl implements JarFilesMover {
 
 	@Override
-	public void generateGradleScript() {
+	public void moveJarFiles() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
