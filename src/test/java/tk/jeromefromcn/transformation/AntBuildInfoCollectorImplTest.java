@@ -7,9 +7,9 @@ import java.util.Set;
 
 import org.junit.Test;
 
-public class AntDependenciesCollectorImplTest {
+public class AntBuildInfoCollectorImplTest {
 
-	private AntDependenciesCollector tester = new AntDependenciesCollectorImpl();
+	private AntBuildInfoCollector tester = new AntBuildInfoCollectorImpl();
 
 	@Test
 	public void testCollectThirdDependencies() {

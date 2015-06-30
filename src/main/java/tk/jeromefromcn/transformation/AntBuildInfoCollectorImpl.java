@@ -16,7 +16,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 @Component
-public class AntDependenciesCollectorImpl implements AntDependenciesCollector {
+public class AntBuildInfoCollectorImpl implements AntBuildInfoCollector {
 
 	private static final String BUILD_FILE_NAME = "build.xml";
 	private static final String PATH_ELEMENT = "path";
@@ -37,14 +37,14 @@ public class AntDependenciesCollectorImpl implements AntDependenciesCollector {
 		this.basePath = basePath;
 	}
 
-	public AntDependenciesCollectorImpl(String basePath) {
+	public AntBuildInfoCollectorImpl(String basePath) {
 		this.basePath = basePath;
 	}
 
-	public AntDependenciesCollectorImpl() {
+	public AntBuildInfoCollectorImpl() {
 	}
 
-	public List<String> getBuildFilePaths() {
+	public List<String> collectBuildFilePaths() {
 		return buildFilePaths;
 	}
 
@@ -146,6 +146,12 @@ public class AntDependenciesCollectorImpl implements AntDependenciesCollector {
 			}
 		}
 		return buildFilePaths;
+	}
+
+	@Override
+	public Set<String> collectInternalDependencies() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

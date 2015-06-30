@@ -9,19 +9,20 @@ package tk.jeromefromcn.transformation;
 
 public interface Transformer {
 
+	void setBasePath(String basePath);
+
+	void setRepoPath(String repoPath);
+
 	/**
-	 * 给定stariboss代码根目录，将ant依赖转换成gradle依赖并生成gradle脚本
+	 * 根据stariboss代码根目录，将ant依赖转换成gradle依赖并生成gradle脚本
 	 * 
-	 * @param basePath
 	 */
-	void transferDependencies(String basePath);
+	void transferDependencies();
 
 	/**
 	 * 根据stariboss代码根目录和本地仓库根目录，将依赖的jar包按照maven仓库格式重新排列
 	 * 
-	 * @param basePath
-	 * @param repoPath
 	 */
-	void transferArtifacts(String basePath, String repoPath);
+	void transferArtifacts();
 
 }

@@ -14,10 +14,13 @@ public class Application {
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				Application.class);
 		Transformer transformer = context.getBean(TransformerImpl.class);
+
+		transformer.setBasePath("D:\\GitLab\\stariboss-os-demo");
+		transformer.setRepoPath("D:\\resources\\tool\\.m2\\repository");
 		// transformer
-		// .transferDependencies("/Users/Jerome/Documents/gitlab/stariboss-os-demo");
-		transformer.transferArtifacts(
-				"/Users/Jerome/Documents/gitlab/stariboss-os-demo",
-				"/Users/Jerome/Documents/gitlab/tool/m2/repository");
+		// .transferDependencies();
+		transformer.transferArtifacts();
 	}
 }
+// 海外accept、callcenteragent jms包没有
+// haiwai-proxy xfire 补丁包没有

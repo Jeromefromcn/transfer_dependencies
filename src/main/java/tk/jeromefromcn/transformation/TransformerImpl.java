@@ -1,5 +1,6 @@
 package tk.jeromefromcn.transformation;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class TransformerImpl implements Transformer {
 
 	@Autowired
-	private AntDependenciesCollector antDependenciesCollector;
+	private AntBuildInfoCollector antBuildInfoCollector;
 
 	@Autowired
 	private DependenciesMapper dependenciesMapper;
@@ -21,32 +22,43 @@ public class TransformerImpl implements Transformer {
 	@Autowired
 	private GradleScriptGenerator gradleScriptGenerator;
 
+	private String basePath;
+
+	private String repoPath;
+
+	private Set<String> antDepenPathsSet;
+
+	private Map<String, List<Artifact>> buildFileArtifactMap;
+
 	@Override
-	public void transferDependencies(String basePath) {
-		antDependenciesCollector.setBasePath(basePath);
-		Set<String> dependenciesSet = antDependenciesCollector
+	public void transferDependencies() {
+		antBuildInfoCollector.setBasePath(basePath);
+		Set<String> dependenciesSet = antBuildInfoCollector
 				.collectThirdDependencies();
-		// for (String string : dependenciesSet) {
-		// System.out.println(string);
-		// }
 		System.out.println("--------------------------------------------");
 		Map<String, String> dependenciesMap = dependenciesMapper
 				.mapDependencies(dependenciesSet);
 		System.out.println("--------------------------------------------");
 		gradleScriptGenerator.generateGradleScript(
-				antDependenciesCollector.getBuildFilePaths(), dependenciesMap);
+				antBuildInfoCollector.collectBuildFilePaths(), dependenciesMap);
 	}
 
 	@Override
-	public void transferArtifacts(String basePath, String repoPath) {
-		antDependenciesCollector.setBasePath(basePath);
-		Set<String> dependenciesSet = antDependenciesCollector
+	public void transferArtifacts() {
+		antBuildInfoCollector.setBasePath(basePath);
+		Set<String> dependenciesSet = antBuildInfoCollector
 				.collectThirdDependencies();
-		for (String string : dependenciesSet) {
-			System.out.println(string);
-		}
-		System.out.println("--------------------------------------------");
 		jarFilesMover.moveJarFiles(repoPath, dependenciesSet);
+	}
+
+	@Override
+	public void setBasePath(String basePath) {
+		this.basePath = basePath;
+	}
+
+	@Override
+	public void setRepoPath(String repoPath) {
+		this.repoPath = repoPath;
 	}
 
 }

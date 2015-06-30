@@ -17,14 +17,15 @@ public class JarFilesMoverImpl implements JarFilesMover {
 
 	@Override
 	public void moveJarFiles(String m2Repo, Set<String> dependenciesSet) {
+		System.out.println(dependenciesSet.size());
 		File m2RepoDir = new File(m2Repo);
 		if (m2RepoDir.isDirectory()) {
-			File groupIdDir = new File(m2RepoDir.getPath() + "/" + STAREXT);
-			System.out.println(groupIdDir.getAbsolutePath());
+			File groupIdDir = new File(m2RepoDir.getParent() + "/" + STAREXT);
 			if (!groupIdDir.exists()) {
 				groupIdDir.mkdir();
 			}
 			for (String depen : dependenciesSet) {
+				System.out.println(depen);
 				String artifactId = depen.substring(depen.lastIndexOf('/') + 1,
 						depen.length() - 4);
 				File artifactPath = new File(groupIdDir.getPath() + "/"
@@ -32,12 +33,14 @@ public class JarFilesMoverImpl implements JarFilesMover {
 				if (!artifactPath.exists()) {
 					artifactPath.mkdirs();
 					String jarFilePath = depen.replace("${M2_REPO}", m2Repo);
-					try {
-						fileChannelCopy(new File(jarFilePath), new File(
-								artifactPath + "/" + artifactId + "-" + VERSION
-										+ ".jar"));
-					} catch (Exception e) {
-						e.printStackTrace();
+					File targetFile = new File(artifactPath + "/" + artifactId
+							+ "-" + VERSION + ".jar");
+					if (!targetFile.exists()) {
+						try {
+							fileChannelCopy(new File(jarFilePath), targetFile);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				}
 

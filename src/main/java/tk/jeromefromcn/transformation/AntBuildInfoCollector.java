@@ -4,22 +4,28 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 根据给定的stariboss代码根目录，提取所有子目录下build.xml中的依赖
+ * ant脚本构建信息提取器
  * 
  * @author Jerome
  *
  */
-public interface AntDependenciesCollector {
+public interface AntBuildInfoCollector {
+
+	/**
+	 * 获取内部依赖
+	 * 
+	 * @return
+	 */
+	Set<String> collectInternalDependencies();
+
 	/**
 	 * 获取stariboss代码目录下所有工程的第三方依赖，返回Set格式字符串集合
 	 * 
 	 * @return
 	 */
 	Set<String> collectThirdDependencies();
-	
-
 
 	void setBasePath(String basePath);
 
-	List<String> getBuildFilePaths();
+	List<String> collectBuildFilePaths();
 }
