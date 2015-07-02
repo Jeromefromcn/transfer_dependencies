@@ -1,8 +1,7 @@
 package tk.jeromefromcn.transformation;
 
-import java.util.Set;
-
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 根据传入的Set，生成maven标准的lib仓库，并生成ant依赖与gradle依赖的map
@@ -18,4 +17,5 @@ public interface DependenciesMapper {
 	 * @return
 	 */
 	Map<String, String> mapDependencies(Set<String> antDependenciesSet);
+
 }

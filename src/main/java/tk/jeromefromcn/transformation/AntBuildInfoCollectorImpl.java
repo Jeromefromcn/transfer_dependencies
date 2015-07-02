@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -23,48 +24,17 @@ public class AntBuildInfoCollectorImpl implements AntBuildInfoCollector {
 	private static final String PATHELEMENT_ELEMENT = "pathelement";
 	private static final String LOCATION_ATTRIBUTE = "location";
 
-	private String basePath;
+	public Set<String> collectThirdDependencies(String basePath) {
 
-	private List<String> buildFilePaths;
+		List<String> buildFilePaths = getBuildFilePaths(basePath);
 
-	private Set<String> dependenciesSet;
-
-	public String getBasePath() {
-		return basePath;
-	}
-
-	public void setBasePath(String basePath) {
-		this.basePath = basePath;
-	}
-
-	public AntBuildInfoCollectorImpl(String basePath) {
-		this.basePath = basePath;
-	}
-
-	public AntBuildInfoCollectorImpl() {
-	}
-
-	public List<String> collectBuildFilePaths() {
-		return buildFilePaths;
-	}
-
-	public Set<String> getDependenciesSet() {
-		return dependenciesSet;
-	}
-
-	public Set<String> collectThirdDependencies() {
-
-		buildFilePaths = getBuildFilePaths(basePath);
-
-		dependenciesSet = parseBuildFiles();
-
-		return dependenciesSet;
+		return parseBuildFiles(buildFilePaths);
 	}
 
 	/*
 	 * 解析所有的build.xml文件，获取依赖的配置信息
 	 */
-	private Set<String> parseBuildFiles() {
+	private Set<String> parseBuildFiles(List<String> buildFilePaths) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		Set<String> dependenciesSet = new HashSet<String>();
 		try {
@@ -149,7 +119,14 @@ public class AntBuildInfoCollectorImpl implements AntBuildInfoCollector {
 	}
 
 	@Override
-	public Set<String> collectInternalDependencies() {
+	public Set<String> collectInternalDependencies(String basePath) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<String, List<Artifact>> collectBuildFileAndArtifactsMap(
+			String basePath) {
 		// TODO Auto-generated method stub
 		return null;
 	}

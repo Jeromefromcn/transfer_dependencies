@@ -14,9 +14,8 @@ public interface GradleScriptGenerator {
 	/**
 	 * 根据build文件位置和依赖映射关系，生成gradle脚本
 	 * 
-	 * @param buildFilePaths
-	 * @param dependenciesMap
+	 * @param buildFileArtifactsMap
 	 */
-	void generateGradleScript(List<String> buildFilePaths,
-			Map<String, String> dependenciesMap);
+
+	void generateGradleScript(Map<String, List<Artifact>> buildFileArtifactsMap);
 }

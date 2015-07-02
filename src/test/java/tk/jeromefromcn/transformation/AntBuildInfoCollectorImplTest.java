@@ -13,8 +13,8 @@ public class AntBuildInfoCollectorImplTest {
 
 	@Test
 	public void testCollectThirdDependencies() {
-		tester.setBasePath("src/test/resources/tk/jeromefromcn/transformation/firstlevel");
-		Set<String> dependenciesSet = tester.collectThirdDependencies();
+		String basePath = "src/test/resources/tk/jeromefromcn/transformation/firstlevel";
+		Set<String> dependenciesSet = tester.collectThirdDependencies(basePath);
 		Set<String> compareSet = new HashSet<String>();
 		compareSet
 				.add("${M2_REPO}/spring3.0/server/org.springframework.web-3.0.3.RELEASE.jar");

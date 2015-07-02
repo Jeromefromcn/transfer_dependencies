@@ -26,28 +26,19 @@ public class TransformerImpl implements Transformer {
 
 	private String repoPath;
 
-	private Set<String> antDepenPathsSet;
-
-	private Map<String, List<Artifact>> buildFileArtifactMap;
-
 	@Override
 	public void transferDependencies() {
-		antBuildInfoCollector.setBasePath(basePath);
-		Set<String> dependenciesSet = antBuildInfoCollector
-				.collectThirdDependencies();
-		System.out.println("--------------------------------------------");
-		Map<String, String> dependenciesMap = dependenciesMapper
-				.mapDependencies(dependenciesSet);
-		System.out.println("--------------------------------------------");
-		gradleScriptGenerator.generateGradleScript(
-				antBuildInfoCollector.collectBuildFilePaths(), dependenciesMap);
+		Map<String, List<Artifact>> buildFileArtifactsMap = antBuildInfoCollector
+				.collectBuildFileAndArtifactsMap(basePath);
+
+		gradleScriptGenerator.generateGradleScript(buildFileArtifactsMap);
 	}
 
 	@Override
 	public void transferArtifacts() {
-		antBuildInfoCollector.setBasePath(basePath);
 		Set<String> dependenciesSet = antBuildInfoCollector
-				.collectThirdDependencies();
+				.collectThirdDependencies(basePath);
+
 		jarFilesMover.moveJarFiles(repoPath, dependenciesSet);
 	}
 

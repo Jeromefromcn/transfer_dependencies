@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 public class GradleScriptGeneratorImpl implements GradleScriptGenerator {
 
 	@Override
-	public void generateGradleScript(List<String> buildFilePaths,
-			Map<String, String> dependenciesMap) {
+	public void generateGradleScript(
+			Map<String, List<Artifact>> buildFileArtifactsMap) {
 		// TODO Auto-generated method stub
 
 	}
