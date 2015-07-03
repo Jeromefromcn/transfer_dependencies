@@ -1,5 +1,6 @@
 package tk.jeromefromcn.transformation;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ public class GradleScriptGeneratorImpl implements GradleScriptGenerator {
 
 	@Override
 	public void generateGradleScript(
-			Map<String, List<Artifact>> buildFileArtifactsMap) {
+			Map<File, List<Artifact>> buildFileArtifactsMap) {
 		// TODO Auto-generated method stub
 
 	}

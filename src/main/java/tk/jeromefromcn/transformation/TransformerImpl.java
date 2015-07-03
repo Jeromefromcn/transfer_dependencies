@@ -1,8 +1,8 @@
 package tk.jeromefromcn.transformation;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ public class TransformerImpl implements Transformer {
 
 	@Override
 	public void transferDependencies() {
-		Map<String, List<Artifact>> buildFileArtifactsMap = antBuildInfoCollector
+		Map<File, List<Artifact>> buildFileArtifactsMap = antBuildInfoCollector
 				.collectBuildFileAndArtifactsMap(basePath);
 
 		gradleScriptGenerator.generateGradleScript(buildFileArtifactsMap);
@@ -36,10 +36,10 @@ public class TransformerImpl implements Transformer {
 
 	@Override
 	public void transferArtifacts() {
-		Set<String> dependenciesSet = antBuildInfoCollector
+		Map<String, Artifact> dependenciesMap = antBuildInfoCollector
 				.collectThirdDependencies(basePath);
 
-		jarFilesMover.moveJarFiles(repoPath, dependenciesSet);
+		jarFilesMover.moveJarFiles(repoPath, dependenciesMap);
 	}
 
 	@Override

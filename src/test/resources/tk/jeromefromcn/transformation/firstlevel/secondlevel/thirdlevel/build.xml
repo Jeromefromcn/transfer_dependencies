@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="GB2312"?>
-<project name="build"  basedir=".">
+<project name="build" basedir=".">
 
+	<e1 attr1="value">
+		<e2 attr2="value" />
+	</e1>
 	<path id="ext.classpath">
-
 		<fileset dir="${dir.dependency}">
 			<include name="*-common-*.jar" />
+			<include name="*-domain-*.jar" />
+			<e5 attr5="value">
+				<e6 attr6="value" />
+			</e5>
 		</fileset>
-		<pathelement
-			location="${M2_REPO}/spring3.0/server/org.springframework.web-3.0.3.RELEASE.jar" />
-		<pathelement
-			location="${M2_REPO}/spring3.0/server/org.springframework.web.servlet-3.0.3.RELEASE.jar" />
+		<e3 attr3="value">
+			<e4 attr4="value" />
+		</e3>
+		<pathelement location="${M2_REPO}/spring3.0/server/org.springframework.web-3.0.3.RELEASE.jar" />
+		<pathelement location="${M2_REPO}/spring3.0/server/org.springframework.web.servlet-3.0.3.RELEASE.jar" />
 	</path>
 </project>

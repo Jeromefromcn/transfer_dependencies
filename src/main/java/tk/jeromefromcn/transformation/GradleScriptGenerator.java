@@ -1,5 +1,6 @@
 package tk.jeromefromcn.transformation;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -17,5 +18,5 @@ public interface GradleScriptGenerator {
 	 * @param buildFileArtifactsMap
 	 */
 
-	void generateGradleScript(Map<String, List<Artifact>> buildFileArtifactsMap);
+	void generateGradleScript(Map<File, List<Artifact>> buildFileArtifactsMap);
 }

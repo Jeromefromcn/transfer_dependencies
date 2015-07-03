@@ -17,7 +17,7 @@ public class JarFilesMoverImplTest {
 
 		Set<String> dependenciesSet = new HashSet<String>();
 		dependenciesSet.add("${M2_REPO}/gradle-wrapper.jar");
-		tester.moveJarFiles("gradle/wrapper", dependenciesSet);
+//		tester.moveJarFiles("gradle/wrapper", dependenciesSet);
 		boolean isExsitence = new File(
 				"gradle/starext/gradle-wrapper/1.0/gradle-wrapper-1.0.jar")
 				.exists();

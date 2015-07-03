@@ -5,36 +5,35 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.util.Set;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class JarFilesMoverImpl implements JarFilesMover {
 
-	private static final String STAREXT = "starext";
-	private static final String VERSION = "1.0";
-
 	@Override
-	public void moveJarFiles(String m2Repo, Set<String> dependenciesSet) {
-		System.out.println(dependenciesSet.size());
+	public void moveJarFiles(String m2Repo,
+			Map<String, Artifact> dependenciesMap) {
+		System.out.println(dependenciesMap.size());
 		File m2RepoDir = new File(m2Repo);
 		if (m2RepoDir.isDirectory()) {
-			File groupIdDir = new File(m2RepoDir.getParent() + "/" + STAREXT);
+			File groupIdDir = new File(m2RepoDir.getParent() + "/"
+					+ Constant.STAREXT);
 			if (!groupIdDir.exists()) {
 				groupIdDir.mkdir();
 			}
-			for (String depen : dependenciesSet) {
+			for (String depen : dependenciesMap.keySet()) {
 				System.out.println(depen);
 				String artifactId = depen.substring(depen.lastIndexOf('/') + 1,
 						depen.length() - 4);
 				File artifactPath = new File(groupIdDir.getPath() + "/"
-						+ artifactId + "/" + VERSION);
+						+ artifactId + "/" + Constant.VERSION);
 				if (!artifactPath.exists()) {
 					artifactPath.mkdirs();
 					String jarFilePath = depen.replace("${M2_REPO}", m2Repo);
 					File targetFile = new File(artifactPath + "/" + artifactId
-							+ "-" + VERSION + ".jar");
+							+ "-" + Constant.VERSION + ".jar");
 					if (!targetFile.exists()) {
 						try {
 							fileChannelCopy(new File(jarFilePath), targetFile);
