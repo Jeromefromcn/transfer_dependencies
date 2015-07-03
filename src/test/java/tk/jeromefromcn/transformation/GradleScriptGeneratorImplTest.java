@@ -8,7 +8,7 @@ public class GradleScriptGeneratorImplTest {
 
 	@Test
 	public void testGenerateGradleScript() {
-		fail("Not yet implemented");
+		
 	}
 
 }
