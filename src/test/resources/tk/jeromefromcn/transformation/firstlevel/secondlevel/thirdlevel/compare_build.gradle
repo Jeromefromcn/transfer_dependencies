@@ -68,11 +68,9 @@ publishing {
 }
 
 dependencies { 
-	
+	testCompile 'junit:junit:4.12'
 	compile "stariboss:stariboss-common-bin:${version}"
 	compile "stariboss:stariboss-domain-bin:${version}"
 	compile "starext:org.springframework.web-3.0.3.RELEASE:1.0"
 	compile "starext:org.springframework.web.servlet-3.0.3.RELEASE:1.0"
-	
-	testCompile 'junit:junit:4.12'
 }
