@@ -14,9 +14,6 @@ public class TransformerImpl implements Transformer {
 	private AntBuildInfoCollector antBuildInfoCollector;
 
 	@Autowired
-	private DependenciesMapper dependenciesMapper;
-
-	@Autowired
 	private JarFilesMover jarFilesMover;
 
 	@Autowired

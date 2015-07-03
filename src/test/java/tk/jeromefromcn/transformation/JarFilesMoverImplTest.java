@@ -3,8 +3,8 @@ package tk.jeromefromcn.transformation;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -15,9 +15,10 @@ public class JarFilesMoverImplTest {
 	@Test
 	public void testMoveJarFiles() {
 
-		Set<String> dependenciesSet = new HashSet<String>();
-		dependenciesSet.add("${M2_REPO}/gradle-wrapper.jar");
-//		tester.moveJarFiles("gradle/wrapper", dependenciesSet);
+		Map<String, Artifact> dependenciesMap = new HashMap<String, Artifact>();
+		dependenciesMap.put("${M2_REPO}/gradle-wrapper.jar", new Artifact(
+				Constant.STAREXT, "gradle-wrapper", Constant.VERSION));
+		tester.moveJarFiles("gradle/wrapper", dependenciesMap);
 		boolean isExsitence = new File(
 				"gradle/starext/gradle-wrapper/1.0/gradle-wrapper-1.0.jar")
 				.exists();

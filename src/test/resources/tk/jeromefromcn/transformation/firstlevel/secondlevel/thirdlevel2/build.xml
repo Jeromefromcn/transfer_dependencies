@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="GB2312"?>
+<project name="build" basedir=".">
+
+	<path id="ext.classpath">
+		<fileset dir="${dir.dependency}">
+			<include name="*-common-*.jar" />
+			<e5 attr5="value">
+				<e6 attr6="value" />
+			</e5>
+			<include name="*-accept-*.jar" />
+		</fileset>
+		<pathelement location="${M2_REPO}/spring3.0/server/org.springframework.web-3.0.3.RELEASE.jar" />
+		<e3 attr3="value">
+			<e4 attr4="value" />
+		</e3>
+		<pathelement location="${M2_REPO}/spring3.0/server/org.springframework.core-3.0.3.RELEASE.jar" />
+	</path>
+	<e1 attr1="value">
+		<e2 attr2="value" />
+	</e1>
+</project>

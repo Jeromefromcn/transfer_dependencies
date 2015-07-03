@@ -15,7 +15,6 @@ public class JarFilesMoverImpl implements JarFilesMover {
 	@Override
 	public void moveJarFiles(String m2Repo,
 			Map<String, Artifact> dependenciesMap) {
-		System.out.println(dependenciesMap.size());
 		File m2RepoDir = new File(m2Repo);
 		if (m2RepoDir.isDirectory()) {
 			File groupIdDir = new File(m2RepoDir.getParent() + "/"
@@ -24,7 +23,6 @@ public class JarFilesMoverImpl implements JarFilesMover {
 				groupIdDir.mkdir();
 			}
 			for (String depen : dependenciesMap.keySet()) {
-				System.out.println(depen);
 				String artifactId = depen.substring(depen.lastIndexOf('/') + 1,
 						depen.length() - 4);
 				File artifactPath = new File(groupIdDir.getPath() + "/"
