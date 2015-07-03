@@ -1,0 +1,78 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+buildscript {
+	repositories {
+		maven {
+			url "${repository_url}"
+			credentials {
+				username = "${repository_username}"
+				password = "${repository_password}"
+			}
+		}
+	}
+	dependencies { 
+		classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.1.1" }
+}
+
+allprojects {
+	apply plugin: "com.jfrog.artifactory"
+	apply plugin: 'maven-publish'
+}
+
+jar {
+	baseName = 'stariboss-thirdlevel-bin'
+	version =  "${version}"
+}
+
+
+
+
+artifactory {
+	contextUrl = "${context_url}"
+	publish {
+		repository {
+			repoKey = 'libs-release-local'
+				username = "${repository_username}"
+				password = "${repository_password}"
+			maven = true
+
+		}
+		defaults { publications ('mavenJava') }
+	}
+	resolve {
+		repository {
+			repoKey = 'libs-release'
+				username = "${repository_username}"
+				password = "${repository_password}"
+			maven = true
+
+		}
+	}
+}
+
+task sourceJar(type: Jar) { from sourceSets.main.allJava }
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			groupId 'stariboss'
+			artifactId 'stariboss-thirdlevel-bin'
+			version "${version}"
+
+			from components.java
+
+			artifact sourceJar { classifier 'sources' }
+		}
+	}
+}
+
+dependencies { 
+	
+	compile "stariboss:stariboss-common-bin:${version}"
+	compile "stariboss:stariboss-domain-bin:${version}"
+	compile "starext:org.springframework.web-3.0.3.RELEASE:1.0"
+	compile "starext:org.springframework.web.servlet-3.0.3.RELEASE:1.0"
+	
+	testCompile 'junit:junit:4.12'
+}
