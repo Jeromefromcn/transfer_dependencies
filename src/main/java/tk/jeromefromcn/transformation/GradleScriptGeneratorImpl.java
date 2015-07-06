@@ -42,6 +42,7 @@ public class GradleScriptGeneratorImpl implements GradleScriptGenerator {
 						getGraldeDepens(buildFileArtifactsMap.get(file)));
 				File gradleBuildFile = new File(file.getParent() + "/"
 						+ Constant.GRADLE_BUILD_FILE_NAME);
+				gradleBuildFile.deleteOnExit();
 				gradleBuildFile.createNewFile();
 				BufferedWriter writer = new BufferedWriter(new FileWriter(
 						gradleBuildFile));
