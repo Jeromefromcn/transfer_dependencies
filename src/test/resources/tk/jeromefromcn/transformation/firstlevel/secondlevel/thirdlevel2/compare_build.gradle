@@ -57,7 +57,7 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			groupId 'stariboss'
-			artifactId 'stariboss-thirdlevel-bin'
+			artifactId 'stariboss-thirdlevel2-bin'
 			version "${version}"
 
 			from components.java
@@ -67,10 +67,11 @@ publishing {
 	}
 }
 
-dependencies {
+dependencies { 
 	testCompile 'junit:junit:4.12'
-	compile "stariboss:stariboss-common-bin:${version}"
-	compile "stariboss:stariboss-accept-bin:${version}"
+	compile "stariboss:stariboss-common-bin:${internal_version}"
+	compile "stariboss:stariboss-accept-bin:${internal_version}"
 	compile "starext:org.springframework.web-3.0.3.RELEASE:1.0"
 	compile "starext:org.springframework.core-3.0.3.RELEASE:1.0"
+
 }

@@ -57,7 +57,7 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			groupId 'stariboss'
-			artifactId 'stariboss-thirdlevel-bin'
+			artifactId 'stariboss-artifactId_placeholder-bin'
 			version "${version}"
 
 			from components.java
@@ -67,4 +67,7 @@ publishing {
 	}
 }
 
-dependencies {
+dependencies { 
+	testCompile 'junit:junit:4.12'
+dependencies_placeholder
+}
