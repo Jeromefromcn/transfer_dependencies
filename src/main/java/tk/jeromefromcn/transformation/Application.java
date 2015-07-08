@@ -17,7 +17,8 @@ public class Application {
 
 		transformer.setBasePath("D:\\GitLab\\stariboss-os-demo");
 		transformer.setRepoPath("D:\\resources\\tool\\.m2\\repository");
-		transformer.transferDependencies();
+//		transformer.transferDependencies();
+		transformer.transferArtifacts();
 	}
 }
 // 海外accept、callcenteragent jms包没有
